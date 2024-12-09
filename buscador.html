@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <form method="GET" action="{{ url_for('buscador') }}" class="form-busqueda">
+      
+
+<!-- Título -->
+<div id="titulo">
+    Lista de Pescadores
+</div>
+
+<!-- Contenedor con scroll -->
+<div id="pescadores-container">
+    {% for pescador in usuarios %}
+        <div class="pescador">
+            <p>{{ pescador.nombre }} {{ pescador.apellido }}</p>
+            <p>{{ pescador.direccion }}</p>
+            <p>{{ pescador.matricula }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+        <style>
+/* Título */
+#titulo {
+    position: relative;  /* Inicialmente está en su posición natural */
+    transition: top 0.3s; /* Efecto suave al pegarse */
+    background-color: #fff; /* Fondo blanco para que sea visible sobre el contenido */
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Contenedor con scroll */
+#pescadores-container {
+    max-height: 400px; /* Ajusta el tamaño según sea necesario */
+    overflow-y: auto;  /* Activa el scroll vertical */
+    padding: 10px;
+    border: 1px solid #ddd; /* Borde opcional */
+}
+
+/* Estilo cuando el título debe quedar pegado al tope */
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+
+
+
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f4ec; /* Fondo crema */
+    color: #4c1f24; /* Texto guinda oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+
+h1 {
+    margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+        color: #888b8d;
+        font-weight: bold;
+        
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 950px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilo del buscador */
+.form-busqueda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-busqueda input[type="text"] {
+    padding: 15px 20px;
+    border: 2px solid #bca986;
+    border-radius: 25px;
+    width: 90%;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-busqueda input[type="text"]:focus {
+    border-color: #8e7c66;
+    box-shadow: 0 0 10px rgba(140, 124, 102, 0.5);
+    outline: none;
+}
+
+.form-busqueda button {
+    padding: 15px 50px;
+    background-color: #bca986;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-busqueda button:hover {
+    background-color: #8e7c66;
+    transform: translateY(-3px);
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 15px;
+    border: 1px solid #bca986;
+    text-align: left;
+    font-size: 1em;
+}
+
+table th {
+    background-color: #bca986;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #faf7f2;
+}
+
+table tr:hover {
+    background-color: #f1e9dd;
+    transition: background-color 0.3s ease;
+}
+
+/* Botón regresar al inicio */
+.boton-regresar {
+    text-align: center; /* Centra el botón */
+    margin-top: 20px;   /* Espacio hacia arriba */
+}
+
+.btn-regresar {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #bca986; /* Color crema */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-regresar:hover {
+    background-color: #8e7c66; /* Color crema oscuro */
+    transform: scale(1.05);
+}
+
+footer {
+            width: 100%;
+            background-color: #f2f2f2;
+            color: #888b8d;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer div {
+            margin: 10px 0;
+        }
+
+        footer div h3 {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Buscador  </h1>
+    <div class="container">
+        <!-- Formulario de búsqueda -->
+        <form method="GET" action="{{ url_for('buscador') }}" class="form-busqueda">
+            <input 
+                type="text" 
+                id="busqueda" 
+                name="busqueda" 
+                value="{{ busqueda }}" 
+                placeholder="Buscar por nombre y apellido">
+            <button type="submit">Buscar</button>
+        </form>
+
+       
+        <!-- Tabla de resultados -->
+        {% if resultados %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>RFC</th>
+                    <th>CURP</th>
+                    <th>Número</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pescador in resultados %}
+                <tr>
+                    <td>{{ pescador['nombre'] }}</td>
+                    <td>{{ pescador['apellido'] }}</td>
+                    <td>{{ pescador['fecha_nacimiento'] }}</td>
+                    <td>{{ pescador['RFC'] }}</td>
+                    <td>{{ pescador['CURP'] }}</td>
+                    <td>{{ pescador['numero'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="boton-regresar">
+            <a href="/mostrar" class="btn-regresar">Regresar</a>
+        </div>
+        
+        {% else %}
+        <div class="no-resultados">
+            No se encontraron resultados para "{{ busqueda }}"
+        </div>
+        {% endif %}
+    </div>
+   
+
+</body>
+</html>
+

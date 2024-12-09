@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+       
+        header {
+            background-color: #bca986;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        header nav ul li a:hover {
+            background-color: #a18b72;
+        }
+
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            flex: 1;
+        }
+
+        h2 {
+            color: #691c32;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+     
+        footer {
+            background-color: #f2f2f2;
+            color: #888b8d;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        footer div h3 {
+            margin-bottom: 10px;
+        }
+
+        footer div p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('mostrar') }}">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <div class="container">
+        <h2>MISIÓN</h2>
+        <p>
+            Somos el organismo encargado de gestionar las actividades del sector pesquero y acuacultura con la finalidad de contribuir al desarrollo productivo y económico del estado para el beneficio de los campechanos.
+        </p>
+        <h2>VISIÓN</h2>
+        <p>
+            Ser referente a nivel nacional e internacional, en implementación de políticas encaminadas al desarrollo productivo y económico de las actividades pesqueras y acuícolas; así como mejorar las condiciones de vida de los campechanos que participan en el sector.
+        </p>
+    </div>
+
+  
+    <footer>
+        <div>
+            <h3>CONTACTO</h3>
+            <p>inpesca@campeche.gob.mx</p>
+            <p>(981) 132 0020</p>
+            <p>Horario de atención: 8:00 a 16:00 hrs. de lunes a viernes, días hábiles</p>
+        </div>
+        <div>
+            <h3>UBICACIÓN</h3>
+            <p>Calle 10 Número 338<br>San Fco. de Campeche</p>
+        </div>
+    </footer>
+</body>
+</html>

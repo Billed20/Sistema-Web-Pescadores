@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="styletabla.css">
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>
+                <a href="/editar_usuario/{{ usuario.id }}">Editar</a>
+                <a href="/eliminar_usuario/{{ usuario.id }}" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Agregar Nuevo Usuario</h2>
+    <form action="/agregar_usuario" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>
+
+</style>
+
+
+<style>

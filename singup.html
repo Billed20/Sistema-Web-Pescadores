@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+</head>
+<body>
+    <div class="formulario2">
+        <h2>Registro</h2>
+        <form method="POST">
+            <div class="formulario_registro">
+                <input type="text" name="nombre" required>
+                <label>Nombre</label>
+            </div>
+            <div class="formulario_registro">
+                <input type="text" name="apellido" required>
+                <label>Apellido</label>
+            </div>
+            <div class="formulario_registro">
+                <input type="email" name="correo" required>
+                <label>Correo Electrónico</label>
+            </div>
+            <div class="formulario_registro">
+                <input type="text" name="usuario" required>
+                <label>Usuario</label>
+            </div>
+            <div class="formulario_registro">
+                <input type="password" name="contraseña" required>
+                <label>Contraseña</label>
+            </div>
+            <input type="submit" value="Registrarme">
+            <p>¿Ya tienes una cuenta? <a href="{{ url_for('home') }}">Iniciar Sesión</a></p>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Pescador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            color: #691c32;
+        }
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .btn {
+            text-decoration: none;
+            background-color: #bca986;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #a18b72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles del Pescador</h1>
+        <p><strong>Nombre:</strong> {{ pescador.nombre }} {{ pescador.apellido }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ pescador.fecha_nacimiento }}</p>
+        <p><strong>RFC:</strong> {{ pescador.RFC }}</p>
+        <p><strong>CURP:</strong> {{ pescador.CURP }}</p>
+        <p><strong>Número:</strong> {{ pescador.numero }}</p>
+        <a href="{{ url_for('mostrar') }}" class="btn">Volver a la Lista</a>
+    </div>
+</body>
+</html>
